@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/nursery_api
+    username: nursery_api
+    password: nursery_api
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+  
