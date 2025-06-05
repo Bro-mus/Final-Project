@@ -7,7 +7,9 @@ import nursery.api.controller.model.CustomerData;
 import nursery.api.dao.CustomerDao;
 import nursery.api.entity.Customer;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -28,4 +30,26 @@ public class CustomerService {
         Customer saved = customerDao.save(c);
         return new CustomerData(saved);
     }
+    
+    public List<CustomerData> findAllCustomers() {
+        return customerDao.findAll()
+            .stream()
+            .map(CustomerData::new)
+            .collect(Collectors.toList());
+    }
+   
+    public CustomerData findCustomerById(Long id) {
+        Customer c = customerDao.findById(id)
+            .orElseThrow(() ->
+                new NoSuchElementException("No Customer found with id=" + id));
+        return new CustomerData(c);
+    }
+
+    public void deleteCustomer(Long id) {
+        if (!customerDao.existsById(id)) {
+            throw new NoSuchElementException("No Customer found with id=" + id);
+        }
+        customerDao.deleteById(id);
+    }
+
 }

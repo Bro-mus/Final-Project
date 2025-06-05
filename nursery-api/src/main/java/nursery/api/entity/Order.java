@@ -13,7 +13,6 @@ public class Order {
 	
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
-
     private LocalDate orderDate;
 
     // Many-to-One with Customer
@@ -21,14 +20,16 @@ public class Order {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    // Many-to-Many with Plant
-    @ManyToMany
-    @JoinTable(
-      name = "plant_orders",
-      joinColumns = @JoinColumn(name = "order_id"),
-      inverseJoinColumns = @JoinColumn(name = "plant_id")
+    
+ // Replace the  ManyToMany with a OneToMany to OrderPlant. To include quantity of each plant in an order,
+    // you replace a direct @ManyToMany with two @OneToMany mappings plus a join‐entity class.
+    @OneToMany(
+      mappedBy = "order",
+      cascade = CascadeType.ALL,
+      orphanRemoval = true
     )
-    private List<Plant> plants = new ArrayList<>();
+    private List<OrderPlant> orderPlants = new ArrayList<>();
 }
+
 
 

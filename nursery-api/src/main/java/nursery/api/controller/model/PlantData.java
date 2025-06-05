@@ -10,16 +10,19 @@ import nursery.api.entity.Plant;
 public class PlantData {
     private Long id;
     private String name;
-    private String description;
     private String plantType;
+    private Double price;
+    private String description;
     private Integer inventory;
-
-    /** Construct from JPA Plant */
+    
+    //constructed from Plant.java */
     public PlantData(Plant p) {
-        this.id        = p.getPlantId();
-        this.name      = p.getName();
-        this.description= p.getDescription();
-        this.plantType = p.getPlantType();
- 
+        this.id          = p.getPlantId();
+        this.name        = p.getName();
+        this.plantType   = p.getPlantType();
+        this.description = p.getDescription();   
+        this.price       = p.getPrice();
+        //add inventory for more useful order return that isnt null
+        this.inventory   = p.getInventory();
     }
 }
