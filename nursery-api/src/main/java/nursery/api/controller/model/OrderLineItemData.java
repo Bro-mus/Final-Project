@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderLineItemData {
 	/* 
-	Suggestion to improve/feedback -- customer can get specific inventory amounts if we add DTO for order inventory
+	Suggestion to improve/feedback -- customer can get specific inventory amounts if add DTO for order inventory
 	use only plant ID for simplicity but response include all plant data quantity for how many of =plant id
 	 Use a List in order data 
  */

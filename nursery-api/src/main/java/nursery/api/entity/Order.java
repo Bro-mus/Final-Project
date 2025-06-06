@@ -22,7 +22,7 @@ public class Order {
 
     
  // Replace the  ManyToMany with a OneToMany to OrderPlant. To include quantity of each plant in an order,
-    // you replace a direct @ManyToMany with two @OneToMany mappings plus a join‐entity class.
+    //  replace a direct @ManyToMany with two @OneToMany mappings plus a join‐entity class.
     @OneToMany(
       mappedBy = "order",
       cascade = CascadeType.ALL,

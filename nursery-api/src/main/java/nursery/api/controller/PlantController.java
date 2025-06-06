@@ -26,7 +26,7 @@ public class PlantController {
     
     @GetMapping
     public List<PlantData> getAllPlants() {
-        return plantService.findAllPlants();  // implement findAllPlants() if missing
+        return plantService.findAllPlants();  
     }
 
     @GetMapping("/{id}")
